@@ -1,0 +1,855 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
+    <title>Ministral Elétrica - A energia que você confia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+         /* cor gradiante da pagina  */
+        .gradient-primary {
+            background: linear-gradient(135deg, #000000 0%, #ffee009f 100%);
+        }
+        
+        .gradient-secondary {
+            background: linear-gradient(135deg, #ffffff 0%, #ffee02 100%);
+        }
+        
+        .gradient-accent {
+            background: linear-gradient(135deg, #fbff04 0%, #00f7ff 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark-glass {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(255, 238, 0, 0.664);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
+            to { box-shadow: 0 0 30px rgba(232, 248, 2, 0.733); }
+        }
+        
+        .text-gradient {     /* texto gradiate de titulos*/
+            background: linear-gradient(135deg, #fbff00 0%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-futuristic {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-futuristic:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(79, 172, 254, 0.4);
+        }
+        
+        .btn-futuristic::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-futuristic:hover::before {
+            left: 100%;
+        }
+
+        /* fundo do video da ladingpage */
+        .video-placeholder {
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            position: relative;
+            overflow: hidden;
+        }
+        
+         .video-placeholder::before {   /* efeito na tela de video landingpage  */ 
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;  
+        }
+    
+        @keyframes shimmer { 
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    <!-- Header Futurístico -->
+    <header class="fixed w-full z-50 glass-effect">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 gradient-accent rounded-lg flex items-center justify-center pulse-glow">
+                        <span class="text-xl font-bold">⚡</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gradient">Ministral Elétrica</h1>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="hover:text-blue-400 transition-colors text-sm font-medium">INÍCIO</a>
+                    <a href="#servicos" class="hover:text-blue-400 transition-colors text-sm font-medium">SERVIÇOS</a>
+                    <a href="#portfolio" class="hover:text-blue-400 transition-colors text-sm font-medium">PORTFÓLIO</a>
+                    <a href="#avaliacoes" class="hover:text-blue-400 transition-colors text-sm font-medium">AVALIAÇÕES</a>
+                    <a href="#contato" class="hover:text-blue-400 transition-colors text-sm font-medium">CONTATO</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:flex space-x-3">
+                        <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiDhq68-5mPAxUDFLkGHe4UB-cQFnoECDwQAQ&url=https%3A%2F%2Fwww.facebook.com%2FMinistral.El%2F&usg=AOvVaw0gaLZP-ASuFya44Qs5ioEW&opi=89978449" class="social-icon w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-xs">f</a>
+                        <a href="https://www.instagram.com/ministral_eletrica?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon w-8 h-8 bg-pink-600 rounded-full flex items-center justify-center text-xs">📷</a>
+                        <a href="https://wa.me/c/5511996570280" class="social-icon w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-xs">📞</a>
+                    </div>
+                    <button class="md:hidden text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section Futurístico -->
+    <section id="inicio" class="min-h-screen flex items-center gradient-primary relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl floating"></div>
+            <div class="absolute top-40 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl floating" style="animation-delay: 2s;"></div>
+            <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl floating" style="animation-delay: 4s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 py-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="mb-6">
+                        <span class="px-4 py-2 bg-blue-500/20 rounded-full text-sm font-medium text-blue-300 border border-blue-500/30">
+                            🚀 Tecnologia do Futuro
+                        </span>
+                    </div>
+                    <h2 class="text-6xl font-bold mb-6 leading-tight">
+                        A 
+                        <span class="text-gradient">ENERGIA</span>
+                        QUE VOCÊ CONFIA
+                    </h2>
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        Transformamos espaços com tecnologia elétrica de ponta. Automação, eficiência energética e design futurístico em cada projeto.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToSection('contato')" class="btn-futuristic text-white px-8 py-4 rounded-xl font-semibold text-lg">
+                            Iniciar Projeto
+                        </button>
+                        <button onclick="scrollToSection('portfolio')" class="border border-white/30 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all">
+                            Ver Portfólio
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="video-placeholder rounded-2xl h-96 flex items-center justify-center neon-glow">
+                        <div class="text-center">
+                            <div class="w-20 h-20 gradient-accent rounded-full flex items-center justify-center mx-auto mb-4 pulse-glow">
+                                <span class="text-3xl">▶️</span>
+                            </div>
+                            <p class="text-gray-300">Nos conheça</p>
+                            <p class="text-sm text-gray-500 mt-2">Clique para assistir nossa apresentação</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços Slim -->
+    <section id="servicos" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-4 py-2 bg-purple-500/20 rounded-full text-sm font-medium text-purple-300 border border-purple-500/30 mb-4 inline-block">
+                    ⚡ Nossos Serviços
+                </span>
+                <h3 class="text-4xl font-bold mb-4">Energia que <span class="text-gradient">Transforma</span></h3>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Soluções elétricas inteligentes para o mundo moderno</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="dark-glass p-6 rounded-2xl hover-lift group">
+                    <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-xl">🏠</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Smart Home</h4>
+                    <p class="text-gray-400 text-sm mb-4">Automação residencial completa com controle inteligente</p>
+                    <button onclick="showServiceDetails('smarthome')" class="text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors">
+                        Saiba mais →
+                    </button>
+                </div>
+
+                <div class="dark-glass p-6 rounded-2xl hover-lift group">
+                    <div class="w-12 h-12 gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-xl">🏢</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Corporativo</h4>
+                    <p class="text-gray-400 text-sm mb-4">Soluções empresariais com eficiência energética</p>
+                    <button onclick="showServiceDetails('corporativo')" class="text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors">
+                        Saiba mais →
+                    </button>
+                </div>
+
+                <div class="dark-glass p-6 rounded-2xl hover-lift group">
+                    <div class="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-xl">🔋</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Energia Solar</h4>
+                    <p class="text-gray-400 text-sm mb-4">Sistemas fotovoltaicos inteligentes e sustentáveis</p>
+                    <button onclick="showServiceDetails('solar')" class="text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors">
+                        Saiba mais →
+                    </button>
+                </div>
+
+                <div class="dark-glass p-6 rounded-2xl hover-lift group">
+                    <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-xl">🤖</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">IoT & Automação</h4>
+                    <p class="text-gray-400 text-sm mb-4">Internet das Coisas aplicada à infraestrutura elétrica</p>
+                    <button onclick="showServiceDetails('iot')" class="text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors">
+                        Saiba mais →
+                    </button>
+                </div>
+
+                <div class="dark-glass p-6 rounded-2xl hover-lift group">
+                    <div class="w-12 h-12 gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-xl">⚡</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Emergência 24h</h4>
+                    <p class="text-gray-400 text-sm mb-4">Suporte técnico avançado disponível 24/7</p>
+                    <button onclick="showServiceDetails('emergencia')" class="text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors">
+                        Saiba mais →
+                    </button>
+                </div>
+
+                <div class="dark-glass p-6 rounded-2xl hover-lift group">
+                    <div class="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span class="text-xl">💡</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">LED Inteligente</h4>
+                    <p class="text-gray-400 text-sm mb-4">Iluminação adaptativa com controle por IA</p>
+                    <button onclick="showServiceDetails('led')" class="text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors">
+                        Saiba mais →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfólio com Espaços para Mídia -->
+    <section id="portfolio" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-4 py-2 bg-green-500/20 rounded-full text-sm font-medium text-green-300 border border-green-500/30 mb-4 inline-block">
+                    🎯 Nossos Projetos
+                </span>
+                <h3 class="text-4xl font-bold mb-4">Portfólio <span class="text-gradient">Digital</span></h3>
+                <p class="text-xl text-gray-400">Conheça nossos projetos mais inovadores</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <div class="group cursor-pointer">
+                    <div class="video-placeholder rounded-2xl h-64 mb-4 hover-lift">
+                        <div class="flex items-center justify-center h-full">
+                            <div class="text-center">
+                                <div class="w-16 h-16 gradient-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <span class="text-2xl">📸</span>
+                                </div>
+                                <p class="text-sm text-gray-300">Projeto Residencial</p>
+                                <p class="text-xs text-gray-500">Smart Home Completo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-semibold mb-2">Casa Inteligente Premium</h4>
+                    <p class="text-sm text-gray-400">Automação completa com controle por voz e app</p>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="video-placeholder rounded-2xl h-64 mb-4 hover-lift">
+                        <div class="flex items-center justify-center h-full">
+                            <div class="text-center">
+                                <div class="w-16 h-16 gradient-secondary rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <span class="text-2xl">🎥</span>
+                                </div>
+                                <p class="text-sm text-gray-300">Projeto Comercial</p>
+                                <p class="text-xs text-gray-500">Vídeo do Processo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-semibold mb-2">Escritório Sustentável</h4>
+                    <p class="text-sm text-gray-400">Sistema solar + automação empresarial</p>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="video-placeholder rounded-2xl h-64 mb-4 hover-lift">
+                        <div class="flex items-center justify-center h-full">
+                            <div class="text-center">
+                                <div class="w-16 h-16 gradient-primary rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <span class="text-2xl">📸</span>
+                                </div>
+                                <p class="text-sm text-gray-300">Projeto Industrial</p>
+                                <p class="text-xs text-gray-500">Before & After</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-semibold mb-2">Indústria 4.0</h4>
+                    <p class="text-sm text-gray-400">IoT aplicado à produção industrial</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button onclick="openPortfolio()" class="btn-futuristic text-white px-8 py-4 rounded-xl font-semibold">
+                    Ver Portfólio Completo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avaliações de Clientes -->
+    <section id="avaliacoes" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-4 py-2 bg-yellow-500/20 rounded-full text-sm font-medium text-yellow-300 border border-yellow-500/30 mb-4 inline-block">
+                    ⭐ Depoimentos
+                </span>
+                <h3 class="text-4xl font-bold mb-4">O que nossos <span class="text-gradient">Clientes</span> dizem</h3>
+                <p class="text-xl text-gray-400">Experiências reais de quem confia na VoltTech</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <!-- Avaliação 1 -->
+                <div class="dark-glass p-6 rounded-2xl hover-lift">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 gradient-accent rounded-full flex items-center justify-center mr-4">
+                            <span class="text-lg font-bold">MR</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Maria Rodrigues</h4>
+                            <p class="text-sm text-gray-400">Residencial Premium</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        "A automação residencial da VoltTech transformou completamente minha casa. Agora controlo tudo pelo celular e economizo 40% na conta de luz!"
+                    </p>
+                    <div class="text-xs text-gray-500">
+                        📅 Dezembro 2023 • ✅ Projeto Verificado
+                    </div>
+                </div>
+
+                <!-- Avaliação 2 -->
+                <div class="dark-glass p-6 rounded-2xl hover-lift">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 gradient-secondary rounded-full flex items-center justify-center mr-4">
+                            <span class="text-lg font-bold">JS</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">João Silva</h4>
+                            <p class="text-sm text-gray-400">Empresário</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        "Instalaram energia solar na minha empresa. ROI em 4 anos e sistema de monitoramento incrível. Equipe muito profissional!"
+                    </p>
+                    <div class="text-xs text-gray-500">
+                        📅 Janeiro 2024 • ✅ Projeto Verificado
+                    </div>
+                </div>
+
+                <!-- Avaliação 3 -->
+                <div class="dark-glass p-6 rounded-2xl hover-lift">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 gradient-primary rounded-full flex items-center justify-center mr-4">
+                            <span class="text-lg font-bold">AC</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Ana Costa</h4>
+                            <p class="text-sm text-gray-400">Arquiteta</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        "Atendimento 24h salvou meu projeto! Problema elétrico complexo resolvido em 2 horas. Tecnologia e agilidade impressionantes."
+                    </p>
+                    <div class="text-xs text-gray-500">
+                        📅 Novembro 2023 • ✅ Projeto Verificado
+                    </div>
+                </div>
+
+                <!-- Avaliação 4 -->
+                <div class="dark-glass p-6 rounded-2xl hover-lift">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 gradient-accent rounded-full flex items-center justify-center mr-4">
+                            <span class="text-lg font-bold">RL</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Roberto Lima</h4>
+                            <p class="text-sm text-gray-400">Condomínio Residencial</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        "Modernizaram todo o sistema elétrico do condomínio. Iluminação LED inteligente e economia de 60% nos custos. Excelente!"
+                    </p>
+                    <div class="text-xs text-gray-500">
+                        📅 Outubro 2023 • ✅ Projeto Verificado
+                    </div>
+                </div>
+
+                <!-- Avaliação 5 -->
+                <div class="dark-glass p-6 rounded-2xl hover-lift">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 gradient-secondary rounded-full flex items-center justify-center mr-4">
+                            <span class="text-lg font-bold">CF</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Carla Ferreira</h4>
+                            <p class="text-sm text-gray-400">Loja de Roupas</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        "Sistema IoT na minha loja é fantástico! Controlo iluminação, ar condicionado e segurança remotamente. Vendas aumentaram 25%!"
+                    </p>
+                    <div class="text-xs text-gray-500">
+                        📅 Setembro 2023 • ✅ Projeto Verificado
+                    </div>
+                </div>
+
+                <!-- Avaliação 6 -->
+                <div class="dark-glass p-6 rounded-2xl hover-lift">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 gradient-primary rounded-full flex items-center justify-center mr-4">
+                            <span class="text-lg font-bold">PS</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Paulo Santos</h4>
+                            <p class="text-sm text-gray-400">Indústria Alimentícia</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        "Automação industrial completa! Monitoramento em tempo real, eficiência energética e zero paradas não programadas. Top!"
+                    </p>
+                    <div class="text-xs text-gray-500">
+                        📅 Agosto 2023 • ✅ Projeto Verificado
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estatísticas de Satisfação -->
+            <div class="grid md:grid-cols-4 gap-6 mb-12">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-yellow-400 mb-2">4.9</div>
+                    <div class="text-sm text-gray-400">Avaliação Média</div>
+                    <div class="text-yellow-400 text-sm">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-green-400 mb-2">98%</div>
+                    <div class="text-sm text-gray-400">Clientes Satisfeitos</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-blue-400 mb-2">500+</div>
+                    <div class="text-sm text-gray-400">Projetos Concluídos</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-purple-400 mb-2">24h</div>
+                    <div class="text-sm text-gray-400">Suporte Técnico</div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center">
+                <div class="dark-glass p-8 rounded-2xl max-w-2xl mx-auto">
+                    <h4 class="text-2xl font-bold mb-4">Seja nosso próximo cliente satisfeito!</h4>
+                    <p class="text-gray-300 mb-6">Junte-se a centenas de clientes que já transformaram seus projetos com nossa tecnologia.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="scrollToSection('contato')" class="btn-futuristic text-white px-8 py-4 rounded-xl font-semibold">
+                            Solicitar Orçamento
+                        </button>
+                        <button onclick="openWhatsApp()" class="border border-white/30 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all">
+                            Falar no WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Futurístico -->
+    <section id="contato" class="py-20 gradient-primary relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-600 to-purple-600"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <span class="px-4 py-2 bg-white/20 rounded-full text-sm font-medium mb-4 inline-block">
+                    🚀 Vamos Conversar
+                </span>
+                <h3 class="text-4xl font-bold mb-4">Inicie Seu <span class="text-yellow-300">Projeto</span></h3>
+                <p class="text-xl text-gray-200">Transforme suas ideias em realidade </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div class="glass-effect p-8 rounded-2xl">
+                    <h4 class="text-2xl font-bold mb-6">Conecte-se Conosco</h4>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center">
+                                <span class="text-xl">📱</span>
+                            </div>
+                            <div>
+                                <div class="font-semibold">WhatsApp Business</div>
+                                <div class="text-gray-300">(11) 99657-0280</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 gradient-secondary rounded-xl flex items-center justify-center">
+                                <span class="text-xl">✉️</span>
+                            </div>
+                            <div>
+                                <div class="font-semibold">E-mail </div>
+                                <div class="text-gray-300">ministraleletrica1@gmail.com</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center">
+                                <span class="text-xl">📍</span>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Localização</div>
+                                <div class="text-gray-300">São Paulo - SP<br>Atendemos a grande São Paulo</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4"> 
+                        <a href= "https://wa.me/5511996570280" target="_blank" 
+                            class="btn-futuristic text-white px-6 py-4 rounded-xl font-semibold w-full flex items-center justify-center space-x-2">
+                            <span class="text-xl">💬</span>
+                            <span>Chat no WhatsApp</span>
+                         </a>
+                        
+                        <div class="flex space-x-4">
+                            <a href="#" class="social-icon flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-xl font-semibold text-center transition-all">
+                                Facebook
+                            </a>
+                            <a href="#" class="social-icon flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-4 py-3 rounded-xl font-semibold text-center transition-all">
+                                Instagram
+                            </a>
+                            <a href="#" class="social-icon flex-1 bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-xl font-semibold text-center transition-all">
+                                Catálogo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-effect p-8 rounded-2xl">
+                    <h4 class="text-2xl font-bold mb-6">Solicitar Consultoria</h4>
+                    <p class="text-sm text-gray-300 mb-6">Demo - Formulário para demonstração</p>
+                    
+                    <form id="contactForm" class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Nome" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <input type="email" placeholder="E-mail" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        
+                        <input type="tel" placeholder="Telefone" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        
+                        <select class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="" class="bg-gray-800">Tipo de Projeto</option>
+                            <option value="smarthome" class="bg-gray-800">Smart Home</option>
+                            <option value="corporativo" class="bg-gray-800">Corporativo</option>
+                            <option value="solar" class="bg-gray-800">Energia Solar</option>
+                            <option value="iot" class="bg-gray-800">IoT & Automação</option>
+                        </select>
+                        
+                        <textarea rows="4" placeholder="Descreva seu projeto..." class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"></textarea>
+                        
+                        <button type="submit" class="btn-futuristic text-white px-8 py-4 rounded-xl font-semibold w-full">
+                            Enviar Solicitação
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Minimalista -->
+    <footer class="bg-gray-900 py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 gradient-accent rounded-lg flex items-center justify-center">
+                            <span class="text-xl font-bold">⚡</span>
+                        </div>
+                        <h5 class="text-xl font-bold text-gradient">Ministral Elétrica</h5>
+                    </div>
+                    <p class="text-gray-400 text-sm">A energia que você confia !!!</p>
+                </div>
+                
+                <div>
+                    <h6 class="font-semibold mb-4 text-sm">SERVIÇOS</h6>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>Smart Home</li>
+                        <li>Corporativo</li>
+                        <li>Energia Solar</li>
+                        <li>IoT & Automação</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h6 class="font-semibold mb-4 text-sm">CONTATO</h6>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>📱 (11) 99657-0280</li>
+                        <li>✉️ contato@volttech.com.br</li>
+                        <li>📍 São Paulo - SP</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h6 class="font-semibold mb-4 text-sm">REDES SOCIAIS</h6>
+                    <div class="flex space-x-3">
+                        <a href="#" class="social-icon w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-sm hover:bg-blue-700">f</a>
+                        <a href="#" class="social-icon w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-sm">📷</a>
+                        <a href="#" class="social-icon w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center text-sm hover:bg-blue-600">in</a>
+                        <a href="#" class="social-icon w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center text-sm hover:bg-red-700">📺</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
+                <p>&copy; 2024 VoltTech. Todos os direitos reservados. | Tecnologia do Futuro</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="serviceModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50">
+        <div class="dark-glass rounded-2xl p-8 max-w-md mx-4 border border-white/20">
+            <div class="flex justify-between items-center mb-6">
+                <h4 id="modalTitle" class="text-2xl font-bold"></h4>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="modalContent" class="text-gray-300 mb-6 text-sm leading-relaxed"></div>
+            <button onclick="scrollToSection('contato'); closeModal();" class="btn-futuristic text-white px-6 py-3 rounded-xl font-semibold w-full">
+                Solicitar Consultoria
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Navegação suave
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Links do menu
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
+        });
+
+        // Detalhes dos serviços
+        const serviceDetails = {
+            smarthome: {
+                title: "Smart Home",
+                content: "Transforme sua casa em um ambiente inteligente:\n\n• Controle por voz e aplicativo\n• Iluminação adaptativa\n• Climatização automática\n• Segurança integrada\n• Economia de energia\n• Integração com assistentes virtuais\n\nTecnologia de ponta para máximo conforto e eficiência."
+            },
+            corporativo: {
+                title: "Soluções Corporativas",
+                content: "Infraestrutura elétrica empresarial avançada:\n\n• Sistemas de energia inteligentes\n• Monitoramento em tempo real\n• Eficiência energética\n• Backup automático\n• Integração com sistemas corporativos\n• Relatórios de consumo\n\nMaximize a produtividade com tecnologia elétrica de ponta."
+            },
+            solar: {
+                title: "Energia Solar",
+                content: "Sistemas fotovoltaicos inteligentes:\n\n• Painéis de alta eficiência\n• Monitoramento via app\n• Armazenamento de energia\n• Integração com a rede elétrica\n• ROI em até 5 anos\n• Manutenção preditiva\n\nSustentabilidade e economia para o futuro."
+            },
+            iot: {
+                title: "IoT & Automação",
+                content: "Internet das Coisas aplicada:\n\n• Sensores inteligentes\n• Análise de dados em tempo real\n• Automação preditiva\n• Integração com nuvem\n• Machine Learning\n• Controle remoto avançado\n\nO futuro da automação elétrica já chegou."
+            },
+            emergencia: {
+                title: "Emergência 24h",
+                content: "Suporte técnico avançado:\n\n• Diagnóstico remoto\n• Equipe especializada 24/7\n• Peças de reposição em estoque\n• Atendimento prioritário\n• Relatório técnico completo\n• Garantia estendida\n\nSegurança e tranquilidade sempre."
+            },
+            led: {
+                title: "LED Inteligente",
+                content: "Iluminação do futuro:\n\n• Controle de cor e intensidade\n• Sincronização com música\n• Economia de até 90%\n• Vida útil de 50.000 horas\n• Controle por voz\n• Cenários personalizados\n\nIluminação que se adapta ao seu estilo de vida."
+            }
+        };
+
+        function showServiceDetails(serviceType) {
+            const modal = document.getElementById('serviceModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            
+            const service = serviceDetails[serviceType];
+            title.textContent = service.title;
+            content.innerHTML = service.content.replace(/\n/g, '<br>');
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('serviceModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // WhatsApp
+        function openWhatsApp() {
+            const message = "Olá! Gostaria de conhecer as soluções elétricas inteligentes da VoltTech.";
+            const phone = "5511999999999";
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Portfólio
+        function openPortfolio() {
+            alert('Em breve: Galeria completa com fotos e vídeos dos nossos projetos mais inovadores!');
+        }
+
+        // Formulário
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado pelo interesse! Este é um formulário demo. Entre em contato pelo WhatsApp para iniciar seu projeto.');
+        });
+
+        // Fechar modal clicando fora
+        document.getElementById('serviceModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Efeitos de scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.8)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.1)';
+            }
+        });
+
+        // Animações de entrada
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos para animação
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.hover-lift, .dark-glass');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                observer.observe(el);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97230acf12ec1b10',t:'MTc1NTcwNDk4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
